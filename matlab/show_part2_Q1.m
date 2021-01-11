@@ -1,4 +1,4 @@
-function [outputArg1,outputArg2] = show_part2_Q1(t,y,I)
+function [] = show_part2_Q1(t,y,I)
 m = y(:,1);
 n = y(:,2);
 h = y(:,3);
