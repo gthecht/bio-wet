@@ -1,0 +1,1381 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options false
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "palatino" "default"
+\font_sans "helvet" "default"
+\font_typewriter "courier" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 95 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 3
+\pdf_breaklinks true
+\pdf_pdfborder true
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Wet
+\end_layout
+
+\begin_layout Author
+Gilad Hecht
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part*
+Part II
+\end_layout
+
+\begin_layout Section
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Running a simulation of HH for 
+\begin_inset Formula $I=1.778u\left(t\right)\left[\mu A\right]$
+\end_inset
+
+, we got:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figs/fig1.1.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Simulation for the full HH for an input of 
+\begin_inset Formula $I=1.778u\left(t\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can see that there is no potential achieved, since all the values of
+ 
+\begin_inset Formula $m,n,h,V$
+\end_inset
+
+ go quickly back to one.
+ The voltage doesn't even begin to pass zero.
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+NEED TO ANSWER ABOUT EIGENVALUES - SEE QUESTION
+\end_layout
+
+\begin_layout Subsection
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Now for an input current of 
+\begin_inset Formula $I=5u\left(t\right)\left[\mu A\right]$
+\end_inset
+
+ :
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figs/fig1.2.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Simulation-part2-1.2"
+
+\end_inset
+
+Simulation for the full HH for an input of 
+\begin_inset Formula $I=5u\left(t\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+As we can see, there is a continuous Action potential.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Looking at the pulses in figure [
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Simulation-part2-1.2"
+
+\end_inset
+
+], we can see that the maximum potential of the pulse goes down with time,
+ which means that we have an adaptation behavior.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+One more current:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figs/fig1.4.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Simulation for the full HH for an input of 
+\begin_inset Formula $I=4.056u\left(t\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We can see here that although we do get a few pulses, it doesn't continue
+ ad infinitum.
+\end_layout
+
+\begin_layout Standard
+Looking for the greatest current for which there is no Action potential,
+ and the lowest current for which it is continual, we got the two following
+ plots:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figs/fig1.42.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Voltages for an input of 
+\begin_inset Formula $I=u\left(t\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $I=u\left(t\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+By iterating over possible values of 
+\begin_inset Formula $a\in\left(1.78,5\right)$
+\end_inset
+
+, and searching for when there is a Action potential and when there are
+ many, we reached the values:
+\begin_inset Formula 
+\[
+a_{max\,with\,no\,PP}=2.24\left[\mu A\right]
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+a_{min\,with\,infinite\,PPs}=4.16\left[\mu A\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We'll find the nullcline for 
+\begin_inset Formula $\dot{n}=0$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\dot{n}=\alpha_{n}\left(V\right)\left(1-n\right)-\beta_{n}\left(V\right)n=0
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Rightarrow n=\frac{\alpha_{n}\left(V\right)}{\alpha_{n}\left(V\right)-\beta_{n}\left(V\right)}
+\]
+
+\end_inset
+
+We'll plug in the voltages and get the 
+\begin_inset Formula $\dot{n}$
+\end_inset
+
+-nullcline.
+ We'll get the 
+\begin_inset Formula $\dot{V}$
+\end_inset
+
+-nullcline numerically.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figs/fig2.1.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $\dot{n}$
+\end_inset
+
+ and 
+\begin_inset Formula $\dot{V}$
+\end_inset
+
+ nullclines for 
+\begin_inset Formula $I=0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+For each sector, the sign of 
+\begin_inset Formula $\dot{n}$
+\end_inset
+
+ and 
+\begin_inset Formula $\dot{V}$
+\end_inset
+
+ remains the same.
+ This is because the derivatives are continuous, and therefore, between
+ a change of sign, there resides a nullcline.
+ We can see this clearly in the following figure, where each color corresponds
+ to a gradient direction.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figs/fig2.2.png
+	scale 60
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig-part2-sec-2.2"
+
+\end_inset
+
+Signs of 
+\begin_inset Formula $\dot{V}$
+\end_inset
+
+ and 
+\begin_inset Formula $\dot{n}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The equilibrium points are equilibrium points, because for them the gradient
+ is nil.
+ Meaning if we arrive there, then:
+\begin_inset Formula 
+\[
+\left(\dot{n}\left(V_{0},n_{0}\right),\dot{V}\left(n_{0},V_{0}\right)\right)=\left(0,0\right)
+\]
+
+\end_inset
+
+and therefore won't move from the state.
+\end_layout
+
+\begin_layout Standard
+We found the points and the corresponding eigenvalues of the Jacobians:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $V$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $n$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Eigenvalues
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Type
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-73.8811$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.3197$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{array}{c}
+-0.1038+0.4673i\\
+-0.1038-0.4673i
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Stable
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-59.2367$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.5510$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{array}{c}
+21.2981\\
+-0.0812
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Saddle-point
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-28.4833$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.8398$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{array}{c}
+1.1682+4.9443i\\
+1.1682-4.9443i
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Unstable
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Equilibrium points, their eigenvalues and their types
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+The type of equilibrium point can be derived directly from the real of the
+ eigenvalues - 
+\begin_inset Formula $\Re\left(\lambda_{i}\right)$
+\end_inset
+
+.
+ If its positive, then the point is unstable in that direction, if it is
+ negative, the point is stable.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We took the two beginning points: 
+\begin_inset Formula $\left(-69,0.35\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\left(-68,0.35\right)$
+\end_inset
+
+ The outcome:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figs/fig2.4.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Two paths in the state space of the 2D HH equation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The nullclines are lines for which either 
+\begin_inset Formula $\dot{n}=0$
+\end_inset
+
+ or 
+\begin_inset Formula $\dot{V}=0$
+\end_inset
+
+.
+ Since 
+\begin_inset Formula $n$
+\end_inset
+
+ and 
+\begin_inset Formula $V$
+\end_inset
+
+ are the axes of the state space, therefore the path of the state must cross
+ the nullcline perpendicular to the axes of the nullcline (north-south for
+ 
+\begin_inset Formula $\dot{V}$
+\end_inset
+
+ and east-west for 
+\begin_inset Formula $\dot{n}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Because of this, whenever we near a nullcline, depending on the sign of
+ the derivatives, we will approach a perpendicular angle.
+ But looking at the graphs, the functions are never perpendicular to the
+ axes they describe (
+\begin_inset Formula $\dot{n}$
+\end_inset
+
+ to 
+\begin_inset Formula $n$
+\end_inset
+
+ and 
+\begin_inset Formula $\dot{V}$
+\end_inset
+
+ to 
+\begin_inset Formula $V$
+\end_inset
+
+).
+ In addition, looking at the colors fig [
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig-part2-sec-2.2"
+
+\end_inset
+
+], we can see that for each color, we must cross a certain nullcline - purple
+ must be followed by a cross of 
+\begin_inset Formula $\dot{V}=0$
+\end_inset
+
+, Yellow must be followed by a cross of the 
+\begin_inset Formula $\dot{n}=0$
+\end_inset
+
+ nullcline (because for yellow, 
+\begin_inset Formula $\dot{n}>0$
+\end_inset
+
+), blue must be followed by a cross of the 
+\begin_inset Formula $\dot{V}=0$
+\end_inset
+
+ nullcline, this time downwards, and orange by crossing 
+\begin_inset Formula $\dot{n}=0$
+\end_inset
+
+ from left to right.
+ Even in the small areas in the middle this holds.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The border between the two options is somewhere around the 
+\begin_inset Formula $\dot{V}=0$
+\end_inset
+
+ nullcline.
+ Since in the purple zone we have 
+\begin_inset Formula $\dot{n}>0$
+\end_inset
+
+, the trajectory can cross into the small yellow area that is close to the
+ stable point, and then it quickly converges to the stable point without
+ an Action potential.
+ On the other hand, there is some value 
+\begin_inset Formula $V_{0}$
+\end_inset
+
+ for which the trajectory can't enter the small yellow zone, and is therefore
+ pushed towards the larger yellow zone (remember it must cross the 
+\begin_inset Formula $\dot{V}=0$
+\end_inset
+
+ nullcline), and this causes the action potential.
+\end_layout
+
+\begin_layout Standard
+It can be thought of as that the current (of Sodium) needs enough of a voltage
+ to cause it to surge, and thus create the Action potential.
+ If the voltage is too close to the normal one, then there will only be
+ a slight change in 
+\begin_inset Formula $n$
+\end_inset
+
+ and this won't cause the surge.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The beginning point depends on 
+\begin_inset Formula $n$
+\end_inset
+
+ as well as 
+\begin_inset Formula $V$
+\end_inset
+
+, and therefore there is no threshold 
+\begin_inset Formula $V$
+\end_inset
+
+ which decides whether there will be an Action potential or not.
+\end_layout
+
+\begin_layout Section
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The nullclines look much the same, as can be seen in fig[].
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figs/fig3.1.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset Formula $\dot{n}$
+\end_inset
+
+ and 
+\begin_inset Formula $\dot{V}$
+\end_inset
+
+ nullclines for 
+\begin_inset Formula $I=6.5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The equilibrium points and their eigenvalues are:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $V$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $n$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Eigenvalues
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Type
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-70.2530$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.3836$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{array}{c}
+0.3113+0.5160i\\
+0.3113-0.5160i
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Unstable
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-59.8040$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.5457$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{array}{c}
+18.8544\\
+-0.0712
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Saddle-point
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $-28.4569$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.8404$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{array}{c}
+1.0739+4.9719i\\
+1.0739-4.9719i
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Unstable
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Equilibrium points, their eigenvalues and their types
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The values of the equilibrium points changed a little, but are almost the
+ same, the eigenvalues of the first point switched sign, and therefore the
+ point is now unstable.
+ What was without a current a stable point, is now an unstable one.
+ This basically means that unless the beginning state is exactly one of
+ the equilibrium points, the system will be in a perpetual change of state
+ thanks to the input current.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
