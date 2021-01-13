@@ -224,6 +224,7 @@ hold off
 %% 2.7
 
 %% 3.1
+
 I = 3 + x(6) / 2;
 N = 1000;
 V_Na = 55;
@@ -252,9 +253,52 @@ ylabel("n");
 legend("$\dot{n}=0$", "$\dot{V}=0$", "interpreter", "latex") % "$V_K$", "$V_{Na}$"
 ylim([0,1]);
 hold off
+
+
+%% Now for the Jaacobians
+null_diff = (n_nullcline - v_nullcline) .^ 2;
+[~, zero_inds] = findpeaks(-null_diff);
+
+V_min = V_vec(zero_inds);
+n_min = v_nullcline(zero_inds);
+
+delta = 1E-8;
+n_dot_dot_V = (n_dot(V_min + delta, n_min) - n_dot(V_min - delta, n_min)) / (2 * delta);
+V_dot_dot_V = (V_dot_2D(V_min + delta, n_min) - V_dot_2D(V_min - delta, n_min)) / (2 * delta);
+n_dot_dot_n = (n_dot(V_min, n_min + delta) - n_dot(V_min, n_min - delta)) / (2 * delta);
+V_dot_dot_n = (V_dot_2D(V_min, n_min + delta) - V_dot_2D(V_min, n_min - delta)) / (2 * delta);
+
+J3 = zeros(2,2,3);
+J3(1,1,:) = V_dot_dot_V;
+J3(1,2,:) = V_dot_dot_n;
+J3(2,1,:) = n_dot_dot_V;
+J3(2,2,:) = n_dot_dot_n;
+
+eig_vals3 = zeros(2,3);
+for ii = 1:3
+    eig_vals3(:,ii) = eig(J3(:,:,ii));
+    point = [V_min(ii), n_min(ii)]
+    lambda = eig_vals3(:,ii)
+end
+
 %% 3.2
 
 %% 3.3
+N = 100;
+I_vec = linspace(0, 8 - x(5) / 10, N);
+eig_vals = zeros(2, N);
+for ii = 1:N
+    I = I_vec(ii);
+    [points, lambdas] = get_equilibriums(I);
+    ind = dsearchn(points', [-70, 0.35]);
+    eig_vals(:,ii) = lambdas(:, ind);
+end 
+
+figure(10)
+hold on
+plot(I_vec, real(eig_vals(2,:)), 'b');
+legend("$\Re(x)=\Re(y)$", "interpreter", "latex");
+hold off
 
 %% 3.4
 
