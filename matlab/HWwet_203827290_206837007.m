@@ -250,7 +250,7 @@ xlabel("V[mV]");
 ylabel("n");
 % plot([V_K, V_K], [0, max(v_nullcline)], 'g')
 % plot([V_Na, V_Na], [0, max(v_nullcline)], 'g')
-legend("$\dot{n}=0$", "$\dot{V}=0$", "interpreter", "latex") % "$V_K$", "$V_{Na}$"
+legend("$\dot{n}=0$", "$\dot{V}=0$", "interpreter", "latex");
 ylim([0,1]);
 
 %% Now for the Jaacobians
@@ -288,30 +288,118 @@ hold off
 %% 3.2
 
 %% 3.3
-N = 100;
 I_max = 8 - x(5) / 10;
 I_min = 0;
-threshold = 3E-3;
 
-while true
-    I = (I_max + I_min) / 2
+k = 3;
+
+while round(I_min, k) ~= round(I_max, k)
+    I = (I_max + I_min) / 2;
     [points, lambdas] = get_equilibriums(I);
     ind = dsearchn(points', [-70, 0.35]);
     eig_vals = lambdas(:, ind);
-    eig_val = eig_vals(1);
+    eig_val = real(eig_vals(1));
     if eig_val > threshold
         I_max = I;
     elseif eig_val < -threshold
             I_min = I;
-    else
-        break
     end
 end
 
 I
 
 %% 3.4
+I = 3 + x(6) / 2;
+N = 1000;
+V_Na = 55;
+V_K  = -90;
+n0 = 0.5;
+
+V_vec = linspace(V_K+0.01, V_Na-0.01, N)';
+n_nullcline = nullcline_n(V_vec);
+
+v_nullcline = zeros(N,1);
+for ii = 1:N
+    v = V_vec(ii);
+    v_nullcline(ii) = fzero(@(n)V_dot_2D(v, n, I), n0);
+end
+
+K = 1000;
+[N, V] = meshgrid(0:1/K:1.1, linspace(-100+0.01, 70-0.01, K));
+n_dots = n_dot(V, N);
+V_dots = V_dot_2D(V, N);
+n_plus = 2 * (n_dots > 0);
+v_plus = V_dots > 0;
+
+figure(9)
+hold on
+s = surf(V, N, n_plus + v_plus);
+colormap lines;
+view([0 90]);
+xlabel("V[mV]");
+ylabel("n");
+xlim([-100, 70]);
+ylim([0,1.1]);
+title("Signs of $\dot{V}$ and $\dot{n}$", "interpreter", "latex");
+s.EdgeColor = 'none';
+s1 = surf(V(1:2,1:2), N(1:2,1:2), zeros(2));
+s2 = surf(V(1:2,1:2), N(1:2,1:2), ones(2));
+s3 = surf(V(1:2,1:2), N(1:2,1:2), 2 * ones(2));
+s4 = surf(V(1:2,1:2), N(1:2,1:2), 3 * ones(2));
+p1 = plot3([-90,-90,60,60,-90],[0,1,1,0,0], [8,8,8,8,8], 'g', "LineWidth", 1.5);
+legend( [s1, s2, s3, s4, p1], ...
+    "$\dot{n} < 0, \dot{V} < 0$", ...
+    "$\dot{n} < 0, \dot{V} > 0$", ...
+    "$\dot{n} > 0, \dot{V} < 0$", ...
+    "$\dot{n} > 0, \dot{V} > 0$", ...
+    "Outer Ring", ...
+    "interpreter", "latex");
+hold off;
 
 %% 3.5
+I = 5 + x(4);
+N = 1000;
+V_Na = 55;
+V_K  = -90;
+n0 = 0.5;
+
+V_vec = linspace(V_K+0.01, V_Na-0.01, N)';
+n_nullcline = nullcline_n(V_vec);
+
+v_nullcline = zeros(N,1);
+for ii = 1:N
+    v = V_vec(ii);
+    v_nullcline(ii) = fzero(@(n)V_dot_2D(v, n, I), n0);
+end
+
+y0 = [0.25, -70];
+y1 = [0.45, -70];
+
+tspan = [0 500];
+
+[t,y] = ode15s(@(t,y)hh2d(t,y,I), tspan, y0);
+n_vec1 = y(:,1);
+v_vec1 = y(:,2);
+
+[t,y] = ode15s(@(t,y)hh2d(t,y,I), tspan, y1);
+n_vec2 = y(:,1);
+v_vec2 = y(:,2);
+
+
+figure(10);
+hold on
+plot(V_vec, n_nullcline);
+plot(V_vec, v_nullcline);
+plot(v_vec1, n_vec1, "LineWidth", 1.5);
+plot(v_vec2, n_vec2, "LineWidth", 1.5);
+title("Different starting points do or don't result in a PP");
+xlabel("V[mV]");
+ylabel("n");
+legend("$\dot{n}=0$", "$\dot{V}=0$", ...
+    "(V,n)=(" + num2str([y0(1),y0(2)]) + ")", ...
+    "(V,n)=(" + num2str([y1(1), y1(2)]) + ")", ...
+    "interpreter", "latex")
+ylim([0,1]);
+hold off
 
 disp(">> done!");
