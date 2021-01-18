@@ -468,7 +468,7 @@ status open
 \end_inset
 
  nullclines for 
-\begin_inset Formula $I=0$
+\begin_inset Formula $I=0\left[\mu A\right]$
 \end_inset
 
 
@@ -587,6 +587,7 @@ We found the points and the corresponding eigenvalues of the Jacobians:
 
 \begin_layout Standard
 \begin_inset Float table
+placement H
 wide false
 sideways false
 status open
@@ -688,7 +689,7 @@ Type
 \begin_inset Text
 
 \begin_layout Plain Layout
-Stable
+Stable focus
 \end_layout
 
 \end_inset
@@ -788,7 +789,7 @@ Saddle-point
 \begin_inset Text
 
 \begin_layout Plain Layout
-Unstable
+Unstable focus
 \end_layout
 
 \end_inset
@@ -1054,7 +1055,14 @@ The beginning point depends on
 \end_layout
 
 \begin_layout Standard
-The nullclines look much the same, as can be seen in fig[].
+The nullclines look much the same, as can be seen in fig[
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: nullclines 3.1"
+
+\end_inset
+
+].
 \end_layout
 
 \begin_layout Standard
@@ -1078,6 +1086,13 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: nullclines 3.1"
+
+\end_inset
+
+
 \begin_inset Formula $\dot{n}$
 \end_inset
 
@@ -1086,7 +1101,7 @@ status open
 \end_inset
 
  nullclines for 
-\begin_inset Formula $I=6.5$
+\begin_inset Formula $I=6.5\left[\mu A\right]$
 \end_inset
 
 
@@ -1108,6 +1123,7 @@ The equilibrium points and their eigenvalues are:
 
 \begin_layout Standard
 \begin_inset Float table
+placement H
 wide false
 sideways false
 status open
@@ -1209,7 +1225,7 @@ Type
 \begin_inset Text
 
 \begin_layout Plain Layout
-Unstable
+Unstable focus
 \end_layout
 
 \end_inset
@@ -1309,7 +1325,7 @@ Saddle-point
 \begin_inset Text
 
 \begin_layout Plain Layout
-Unstable
+Unstable focus
 \end_layout
 
 \end_inset
@@ -1363,8 +1379,16 @@ The values of the equilibrium points changed a little, but are almost the
 
 \end_layout
 
-\begin_layout Subsection
-\begin_inset space ~
+\begin_layout Standard
+Using a form of binary search (we know that there is only one bifurcation,
+ and therefore for currents above it, the real of the eigenvalues is positive
+ and on the other side, the real is negative), we found that the value is
+ approximately:
+\begin_inset Formula 
+\[
+\boxed{I_{0}=2.9\left[\mu A\right]}
+\]
+
 \end_inset
 
 
@@ -1375,6 +1399,188 @@ The values of the equilibrium points changed a little, but are almost the
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsubsection
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We will number each equilibrium point as given in figure [
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: nullclines 3.1"
+
+\end_inset
+
+]
+\end_layout
+
+\begin_layout Standard
+According to the Poincaré index theorem:
+\begin_inset Formula 
+\[
+N=S+1
+\]
+
+\end_inset
+
+ (
+\begin_inset Formula $N$
+\end_inset
+
+ are the number of focus points, and 
+\begin_inset Formula $S$
+\end_inset
+
+ are the number of saddle points).
+ Therefore there can be cyclic loops around:
+\end_layout
+
+\begin_layout Enumerate
+Point 1.
+\end_layout
+
+\begin_layout Enumerate
+Point 3.
+\end_layout
+
+\begin_layout Enumerate
+Points 1,2 and 3.
+\end_layout
+
+\begin_layout Subsubsection
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Using the rectangular route in fig [
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:3.4-b"
+
+\end_inset
+
+], we can see that along it, all routes are inwards - according to the gradients
+ divided by colors.
+ This gives us an outer ring, and we are given an inner ring for 
+\begin_inset Formula $I\ge I^{*}$
+\end_inset
+
+for which all paths lead outwards.
+ This gives us a closed area, without equilibrium points, and for which
+ no route leaves the area.
+ And therefore according to the Poincaré-Bendixon theorem, there is a closed
+ circuit within this area, and all other paths within this area lead to
+ it.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figs/fig3.4.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:3.4-b"
+
+\end_inset
+
+Outer ring for which all trajectories are inwards
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figs/fig3.5.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Routes-for-starting points 3.5"
+
+\end_inset
+
+Routes for starting points 
+\begin_inset Formula $\left(-70,0.25\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\left(-70,-.45\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+These two simulations show how the routes for the two starting points converge
+ to one single route, which is a circuit.
+ This proves (in a graphical manner) that indeed we do have a closed circuit
+ route around all three equilibrium points.
 \end_layout
 
 \end_body
