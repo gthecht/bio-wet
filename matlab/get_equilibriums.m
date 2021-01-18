@@ -19,17 +19,22 @@ function [points, lambdas] = get_equilibriums(I)
     V_min = V_vec(zero_inds);
     n_min = v_nullcline(zero_inds);
 
+%     figure(11)
+%     hold on
+%     plot(V_vec, n_nullcline, 'r');
+%     plot(V_vec, v_nullcline, 'b');    
+    
     delta = 1E-8;
-    n_dot_dot_V = (n_dot(V_min + delta, n_min) - n_dot(V_min - delta, n_min)) / (2 * delta);
-    V_dot_dot_V = (V_dot_2D(V_min + delta, n_min) - V_dot_2D(V_min - delta, n_min)) / (2 * delta);
-    n_dot_dot_n = (n_dot(V_min, n_min + delta) - n_dot(V_min, n_min - delta)) / (2 * delta);
-    V_dot_dot_n = (V_dot_2D(V_min, n_min + delta) - V_dot_2D(V_min, n_min - delta)) / (2 * delta);
+    n_dot_d_V = (n_dot(V_min + delta, n_min) - n_dot(V_min - delta, n_min)) / (2 * delta);
+    V_dot_d_V = (V_dot_2D(V_min + delta, n_min) - V_dot_2D(V_min - delta, n_min)) / (2 * delta);
+    n_dot_d_n = (n_dot(V_min, n_min + delta) - n_dot(V_min, n_min - delta)) / (2 * delta);
+    V_dot_d_n = (V_dot_2D(V_min, n_min + delta) - V_dot_2D(V_min, n_min - delta)) / (2 * delta);
 
     J3 = zeros(2,2,3);
-    J3(1,1,:) = V_dot_dot_V;
-    J3(1,2,:) = V_dot_dot_n;
-    J3(2,1,:) = n_dot_dot_V;
-    J3(2,2,:) = n_dot_dot_n;
+    J3(1,1,:) = V_dot_d_V;
+    J3(1,2,:) = V_dot_d_n;
+    J3(2,1,:) = n_dot_d_V;
+    J3(2,2,:) = n_dot_d_n;
 
     lambdas = zeros(2,3);
     points = zeros(2,3);
