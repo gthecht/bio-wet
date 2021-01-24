@@ -190,7 +190,6 @@ tspan = [0, 200];
 y0 = [0.05 ,0.32, 0.6, -74];
 
 a1 = (1 + x(9) / 9);
-
 [t,y] = ode15s(@(t,y)hhx(t,y,a1), tspan, y0);
 
 show_part2_Q1(t, y, a1)
