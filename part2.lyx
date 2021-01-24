@@ -26,7 +26,7 @@
 \output_sync 0
 \bibtex_command default
 \index_command default
-\float_placement h
+\float_placement H
 \paperfontsize default
 \spacing single
 \use_hyperref true
@@ -86,11 +86,31 @@
 \begin_body
 
 \begin_layout Title
-Wet
+046326
+\end_layout
+
+\begin_layout Title
+Introduction to Biological Signals & Systems 
 \end_layout
 
 \begin_layout Author
-Gilad Hecht
+Simulation Exercise
+\end_layout
+
+\begin_layout Description
+Student: Paz Peleg 
+\series bold
+ID:
+\series default
+ 203827290
+\end_layout
+
+\begin_layout Description
+Student: Gilad Hecht 
+\series bold
+ID:
+\series default
+ 203827290
 \end_layout
 
 \begin_layout Standard
@@ -100,15 +120,653 @@ Gilad Hecht
 
 \end_layout
 
-\begin_layout Part*
-Part II
-\end_layout
-
-\begin_layout Section
+\begin_layout Part
 \begin_inset space ~
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+HH Model (Assuming 
+\begin_inset Formula $I=0$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Subsection
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+There is a single equilibrium point of the system when 
+\begin_inset Formula $V_{K}<V<V_{Na}$
+\end_inset
+
+, which is:
+\begin_inset Formula 
+\[
+\begin{array}{c}
+V_{0}=-74.4\left[mV\right]\\
+n_{0}=0.31\\
+m_{0}=0.052\\
+h_{0}=0.596
+\end{array}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Part 1 Q1.2"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The eigenvalues of the Jacobian in the single equilibrium point we found
+ are:
+\begin_inset Formula 
+\[
+\lambda=\left(\begin{array}{c}
+-4.726\\
+-0.178+0.432i\\
+-0.178-0.432i\\
+-0.12
+\end{array}\right)
+\]
+
+\end_inset
+
+We notice that the Real part of all the eigenvalues is negative, so this
+ is a stable equilibrium point.
+ This makes sense as it is the Resting Potential.
+\end_layout
+
+\begin_layout Subsection
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Simulation of the system presenting the transient effects:
+\end_layout
+
+\begin_layout Itemize
+At time T_0=0.5697 [ms] the potential is decreasing and isn’t developing
+ to an Action Potential.
+\end_layout
+
+\begin_layout Itemize
+At Time T_1=0.5707 [ms] the potential is increasing and developing to an
+ Action Potential.
+ 
+\end_layout
+
+\begin_layout Standard
+In the figure [
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:-changing-in-time-for-different-Ts"
+
+\end_inset
+
+], we can how the state variables change in time, in response to different-lengt
+h current pulses.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figs/fig1.1.3.png
+	lyxscale 60
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:-changing-in-time-for-different-Ts"
+
+\end_inset
+
+
+\begin_inset Formula $n,m,h,V$
+\end_inset
+
+ changing in time for different 
+\begin_inset Formula $T$
+\end_inset
+
+'s
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+2D HH Model (Assuming 
+\begin_inset Formula $I=0$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Subsection
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The equilibrium point of the 2D HH model, when 
+\begin_inset Formula $n_{0}=h_{0}=0.35+\frac{9}{90}$
+\end_inset
+
+, is:
+\begin_inset Formula 
+\[
+\begin{array}{c}
+V_{0}=-62.8\left[mV\right]\\
+n_{0}=h_{0}=0.45\\
+m_{0}=0.18
+\end{array}
+\]
+
+\end_inset
+
+The eigenvalues of the Jacobian in the single equilibrium point we found
+ are:
+\begin_inset Formula 
+\[
+\lambda=\left(\begin{array}{c}
+3.0325\\
+-7.7229
+\end{array}\right)
+\]
+
+\end_inset
+
+We can notice that both eigenvalues are Real, and since one eigenvalue is
+ positive and the other is negative, we can conclude that this equilibrium
+ point is a saddle point.
+\end_layout
+
+\begin_layout Standard
+In the figure [
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:flow chart near equilibrium"
+
+\end_inset
+
+], we can see the flow lines near the equilibrium point (
+\begin_inset Formula $V_{0}=-62.8\left[mV\right]$
+\end_inset
+
+, 
+\begin_inset Formula $m_{0}=0.18$
+\end_inset
+
+) in the state-space.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement h
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figs/fig1.2.1.png
+	lyxscale 60
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:flow chart near equilibrium"
+
+\end_inset
+
+Flow lines near the equilibrium point
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+When using the 2D HH model, there is no threshold voltage that defines whether
+ the membrane potential will develop to an Action Potential or not.
+ This is due to that fact that this model is based on 2 variables – 
+\begin_inset Formula $V$
+\end_inset
+
+ and 
+\begin_inset Formula $m$
+\end_inset
+
+, and they both dictate the terms for an Action Potential to develop (terms
+ = threshold curve).
+\end_layout
+
+\begin_layout Standard
+As such, near the saddle point, we can define the threshold curve geometrically
+ by the eigenvectors leading directly to the saddle point (including the
+ saddle point itself).
+ Away from the saddle point, we can define the threshold curve geometrically
+ by the trajectories leading directly to the saddle point.
+ 
+\end_layout
+
+\begin_layout Standard
+The threshold curve split the phase space in half – any trajectory starting
+ from the upper-right half would enable an Action Potential to develop,
+ while trajectories starting from the bottom-left half would get the membrane
+ potential to decrease.
+\end_layout
+
+\begin_layout Standard
+Using the same graph from the previous section, we can present the threshold
+ curve as the red line (notice that there is no “threshold voltage” because
+ the line is not vertical).
+ Seen in figure [
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig: equilibrium lines with red line"
+
+\end_inset
+
+].
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figs/fig1.2.2.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig: equilibrium lines with red line"
+
+\end_inset
+
+Flow lines near the equilibrium point with the threshold curve
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Comparison between full HH Model to 2D HH Model (Assuming 
+\begin_inset Formula $I=0$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Subsection
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figs/fig1.3.1.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Simulation-of-t=0.2"
+
+\end_inset
+
+Simulation of 
+\begin_inset Formula $t=0.2\left[ms\right]$
+\end_inset
+
+, comparing the full HH model to the 2D HH mode
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In the graph in figure [
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Simulation-of-t=0.2"
+
+\end_inset
+
+], we can see how each model “develops” through time, while both start from
+ the same exact starting points:
+\end_layout
+
+\begin_layout Enumerate
+Point 1 (
+\begin_inset Formula $V_{0}+2\left[mV\right]$
+\end_inset
+
+) right of the equilibrium point – should lead to an increasing membrane
+ potential and to an Action Potential.
+\end_layout
+
+\begin_layout Enumerate
+Point 2 (
+\begin_inset Formula $V_{0}-2\left[mV\right]$
+\end_inset
+
+) left of the equilibrium point – should lead to a decreasing membrane potential.
+\end_layout
+
+\begin_layout Standard
+We can see that for each starting point, both models behave similar and
+ provide close results.
+ It can be explained by the fact that the 2D HH model refers to the parameters
+ n and h as constants, so their effect on the model is negligible.
+ When examining the full HH model, these parameters are not constant, but
+ since this simulation is very short in time – we can say that the parameters
+ n and h almost do not change, and that is why we get very similar results
+ between the two models (the 2D HH approximation is good for short periods
+ of time).
+ 
+\end_layout
+
+\begin_layout Subsection
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename figs/fig1.3.2.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Simulation-of-t=4"
+
+\end_inset
+
+Simulation of 
+\begin_inset Formula $t=4\left[ms\right]$
+\end_inset
+
+, comparing the full HH model to the 2D HH mode
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In the graph we can see how each model “develops” through time, while both
+ start from the same exact starting points:
+\end_layout
+
+\begin_layout Enumerate
+Point 1 (
+\begin_inset Formula $V_{0}+2\left[mV\right]$
+\end_inset
+
+) right of the equilibrium point – should lead to an increasing membrane
+ potential and to an Action Potential.
+\end_layout
+
+\begin_layout Enumerate
+Point 2 (
+\begin_inset Formula $V_{0}-2\left[mV\right]$
+\end_inset
+
+) left of the equilibrium point – should lead to a decreasing membrane potential.
+\end_layout
+
+\begin_layout Standard
+We can see that both models behave similarly when starting from Point 2
+ (left of equilibrium) – the values of 
+\begin_inset Formula $V$
+\end_inset
+
+ and 
+\begin_inset Formula $m$
+\end_inset
+
+ decrease and get away from the equilibrium point.
+\end_layout
+
+\begin_layout Standard
+When starting from Point 1 (right of equilibrium) the two models behave
+ entirely different:
+\end_layout
+
+\begin_layout Enumerate
+2D HH model (purple line) – the values of 
+\begin_inset Formula $V$
+\end_inset
+
+ and 
+\begin_inset Formula $m$
+\end_inset
+
+ increase, causing an Action Potential, and keep on rising away from the
+ equilibrium point until reaching another equilibrium.
+\end_layout
+
+\begin_layout Enumerate
+Full HH model (orange line) – the values of 
+\begin_inset Formula $V$
+\end_inset
+
+ and 
+\begin_inset Formula $m$
+\end_inset
+
+ increase, causing an Action Potential, and then the parameters 
+\begin_inset Formula $n$
+\end_inset
+
+ and 
+\begin_inset Formula $h$
+\end_inset
+
+ take their place in restraining the membrane potential, so the values of
+ 
+\begin_inset Formula $V$
+\end_inset
+
+ and 
+\begin_inset Formula $m$
+\end_inset
+
+ fall back to the other side (left of equilibrium point).
+\end_layout
+
+\begin_layout Standard
+This simulation demonstrates the differences between the models in longer
+ time periods, in which the parameters 
+\begin_inset Formula $n$
+\end_inset
+
+ and 
+\begin_inset Formula $h$
+\end_inset
+
+ can no longer be referred to as constants, and they do change and affect
+ the entire model through time (in contrary to the 2D HH approximation).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage clearpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Part
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+HH Model (Assuming 
+\begin_inset Formula $I=a\cdot u\left(t\right)$
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Subsection
@@ -175,9 +833,29 @@ We can see that there is no potential achieved, since all the values of
 \end_layout
 
 \begin_layout Standard
+Since the current is small, it is safe to assume that there is no change
+ to the types of nodes we found in section [
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:Part 1 Q1.2"
 
-\series bold
-NEED TO ANSWER ABOUT EIGENVALUES - SEE QUESTION
+\end_inset
+
+] in part I.
+ Therefore, there is still a stable point somewhere in the vicinity of:
+\begin_inset Formula 
+\[
+\begin{array}{c}
+V_{0}=-74.4\left[mV\right]\\
+n_{0}=0.31\\
+m_{0}=0.052\\
+h_{0}=0.596
+\end{array}
+\]
+
+\end_inset
+
+Which is what the state stabilizes at.
 \end_layout
 
 \begin_layout Subsection
@@ -390,10 +1068,11 @@ a_{min\,with\,infinite\,PPs}=4.16\left[\mu A\right]
 \end_layout
 
 \begin_layout Section
-\begin_inset space ~
+2D HH Model (Assuming 
+\begin_inset Formula $I=0$
 \end_inset
 
-
+) - nullclines
 \end_layout
 
 \begin_layout Subsection
@@ -1041,10 +1720,11 @@ The beginning point depends on
 \end_layout
 
 \begin_layout Section
-\begin_inset space ~
+2D HH Model (Assuming 
+\begin_inset Formula $I>0$
 \end_inset
 
-
+) - bifurctions and cyclic behavior
 \end_layout
 
 \begin_layout Subsection
