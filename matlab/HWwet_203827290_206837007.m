@@ -1,23 +1,187 @@
-close all
+close all; clear; clc;
 
 %% Constants:
 x = [2 0 6 8 3 7 0 0 7];
 y = [2 0 3 8 2 7 2 9 0];
 %% PART I
 
+%% Definitions
+gNa = 120; %[1/(K*Ohm*cm^2)]
+gK = 36; %[1/(K*Ohm*cm^2)]
+gCl = 0.3; %[1/(K*Ohm*cm^2)]
+
+VNa = 55*10^-3; %[V]
+VK = -90*10^-3; %[V]
+VCl = -60*10^-3; %[V]
+
+Cm = 1; %[uF/cm^2]
+
+alpha_n = @(V_p) (0.1 - 0.01*((V_p + 74.4*10^-3)/(10^-3)))/(exp(1-0.1*((V_p + 74.4*10^-3)/(10^-3)))-1); %[1/ms]
+alpha_m = @(V_p) (2.5 - 0.1*((V_p + 74.4*10^-3)/(10^-3)))/(exp(2.5-0.1*((V_p + 74.4*10^-3)/(10^-3)))-1); %[1/ms]
+alpha_h = @(V_p) 0.07*exp(-((V_p + 74.4*10^-3)/(10^-3))/20); %[1/ms]
+beta_n = @(V_p) 0.125*exp(-((V_p + 74.4*10^-3)/(10^-3))/80); %[1/ms]
+beta_m = @(V_p) 4*exp(-((V_p + 74.4*10^-3)/(10^-3))/18); %[1/ms]
+beta_h = @(V_p) 1/(exp(3-0.1*((V_p + 74.4*10^-3)/(10^-3)))+1); %[1/ms]
+
+nInf = @(V_p) alpha_n(V_p)/(alpha_n(V_p) + beta_n(V_p));
+mInf = @(V_p) alpha_m(V_p)/(alpha_m(V_p) + beta_m(V_p));
+hInf = @(V_p) alpha_h(V_p)/(alpha_h(V_p) + beta_h(V_p));
+
+I = 0; % Q1 assumption
+VTag_rest = @(V_p) -(1/Cm)*(gNa*mInf(V_p)^3*hInf(V_p)*(V_p-VNa)+gK*nInf(V_p)^4*(V_p-VK)+gCl*(V_p-VCl))+I/Cm;
+
+
 %% 1.1
+V0 = fzero(VTag_rest, [VK VNa]);
+n0 = nInf(V0);
+m0 = mInf(V0);
+h0 = hInf(V0);
+
+disp(['1.1 the equilibrium point is: V = ' num2str(V0)]);
+disp(['    n = ' num2str(n0) ', m = ' num2str(m0) ', h = ' num2str(h0)])
 
 %% 1.2
+syms n_p m_p h_p V_p
+hh = [symfun(-(1/Cm)*(gNa*m_p^3*h_p*(V_p-VNa)+...
+      gK*n_p^4*(V_p-VK)+gCl*(V_p-VCl))+I/Cm, [V_p, n_p, m_p, h_p]),...
+      symfun(alpha_n*(1-n_p) - beta_n*n_p, [V_p, n_p, m_p, h_p]),...
+      symfun(alpha_m*(1-m_p) - beta_m*m_p, [V_p, n_p, m_p, h_p]),...
+      symfun(alpha_h*(1-h_p) - beta_h*h_p, [V_p, n_p, m_p, h_p])];
+
+jacobian_sym = jacobian(hh, [V_p, n_p, m_p, h_p]);
+jacobian_eig = eig(double(jacobian_sym(V0, n0, m0, h0)));
+
+disp('1.2 The eigenvalues of the jacobian are: ');
+disp(num2str(jacobian_eig));
 
 %% 1.3
+A = 1000;
+y0 = [n0 m0 h0 V0];
+tspan = 0:0.001:18;
+
+T0 = 0.5697;
+I0 = @(t) (10 + y(9))./(1+exp(A*(t - T0)))*10^-3;
+
+%params = n m h V
+hh0 = @(t, params) [alpha_n(params(4))*(1-params(1)) - beta_n(params(4))*params(1);...
+                    alpha_m(params(4))*(1-params(2)) - beta_m(params(4))*params(2);...
+                    alpha_h(params(4))*(1-params(3)) - beta_h(params(4))*params(3);...
+                    -(1/Cm)*(gNa*params(2)^3*params(3)*(params(4)-VNa)+...
+                            gK*params(1)^4*(params(4)-VK)+gCl*(params(4)-VCl))+I0(t)/Cm];
+
+[t0,hhres0] = ode15s(hh0, tspan, y0);
+
+T1 = T0+0.001;
+I1 = @(t) (10 + y(9))./(1+exp(A*(t - T1)))*10^-3;
+
+%params = n m h V
+hh1 = @(t, params) [alpha_n(params(4))*(1-params(1)) - beta_n(params(4))*params(1);...
+                    alpha_m(params(4))*(1-params(2)) - beta_m(params(4))*params(2);...
+                    alpha_h(params(4))*(1-params(3)) - beta_h(params(4))*params(3);...
+                    -(1/Cm)*(gNa*params(2)^3*params(3)*(params(4)-VNa)+...
+                            gK*params(1)^4*(params(4)-VK)+gCl*(params(4)-VCl))+I1(t)/Cm];
+
+[t1,hhres1] = ode15s(hh1, tspan, y0);
+
+titles = {'n','m','h','V'};
+yLab = {'n','m','h','V [Volt]'};
+figure;
+for index = 1:4
+    subplot(2,2,index);
+    hold on; grid on;
+    plot(t0, hhres0(:,index), t1, hhres1(:,index));
+    title(titles{index});
+    legend('T0 = 0.5697ms' ,'T1 = 0.5707ms');
+    xlabel('t[ms]');
+    ylabel(yLab{index});
+end
 
 %% 2.1
+I = 0;
+n0 = 0.35 + y(8)/90;
+h0 = n0;
+
+VTag2D = @(V_p) -(1/Cm)*(gNa*mInf(V_p)^3*h0*(V_p-VNa)+gK*n0^4*(V_p-VK)+gCl*(V_p-VCl))+I/Cm;
+
+Vdest = -(60 + y(7))*10^-3;
+V02d = fzero(VTag2D, [Vdest-0.01 Vdest+0.01]);
+m02d = mInf(V02d);
+
+disp(['2.1 the equilibrium point is: V = ' num2str(V02d)]);
+disp(['    n0 = h0 = ' num2str(n0) ', m0 = ' num2str(m02d)]);
+
+syms m_p V_p
+hh2 = [symfun(-(1/Cm)*(gNa*m_p^3*h0*(V_p-VNa)+gK*n0^4*(V_p-VK)+gCl*(V_p-VCl))+I/Cm, [V_p, m_p]),...
+      symfun(alpha_m*(1-m_p) - beta_m*m_p, [V_p, m_p])];
+
+jacobian_sym = jacobian(hh2, [V_p, m_p]);
+jacobian_eig = eig(double(jacobian_sym(V02d, m02d)));
+
+disp('2.2 The eigenvalues of the jacobian are:');
+disp(num2str(jacobian_eig));
+
+Vquiver = V02d - 2e-3 : 0.5e-3 : V02d + 2e-3;
+mquiver = m02d - 0.035 : 0.005 : m02d + 0.035;
+
+[VQ,MQ] = meshgrid(Vquiver,mquiver);
+VRes = -(1/Cm)*(gNa.*MQ.^3*h0.*(VQ-VNa)+gK*n0^4.*(VQ-VK)+gCl.*(VQ-VCl));
+mRes = (arrayfun(alpha_m,VQ).*(1-MQ) - arrayfun(beta_m,VQ).*MQ);
+
+VRes_unit = (VRes.*1000)./sqrt((VRes.*1000).^2+(mRes.*100).^2);
+mRes_unit = (mRes.*100)./sqrt((VRes.*1000).^2+(mRes.*100).^2);
+
+figure;
+scale = 0.23;
+quiver(VQ*1000, MQ*100, VRes_unit, mRes_unit, scale);
+title('State-Space Flow Lines Near Equilibrium Point of 2D HH Model');
+xlabel('V [mV]');
+ylabel('100*m');
 
 %% 2.2
+% No need for code
 
-%% 3.1
+%% 3.1 + 3.2
+t = [0.2 4];
 
-%% 3.2
+for index = 1:2
+    tspan = 0:0.001:t(index); %[ms]
+    
+    VstartPoint1 = V02d +2e-3;
+    VstartPoint2 = V02d -2e-3;
+    y0full1 = [n0 m02d h0 VstartPoint1];
+    y0full2 = [n0 m02d h0 VstartPoint2];
+    y02d1 = [m02d VstartPoint1];
+    y02d2 = [m02d VstartPoint2];
+
+    %params = n m h V
+    hhFull = @(t, params) [alpha_n(params(4))*(1-params(1)) - beta_n(params(4))*params(1);...
+                        alpha_m(params(4))*(1-params(2)) - beta_m(params(4))*params(2);...
+                        alpha_h(params(4))*(1-params(3)) - beta_h(params(4))*params(3);...
+                        -(1/Cm)*(gNa*params(2)^3*params(3)*(params(4)-VNa)+...
+                                gK*params(1)^4*(params(4)-VK)+gCl*(params(4)-VCl))];
+
+    [~,hhresFull1] = ode15s(hhFull, tspan, y0full1);
+    [~,hhresFull2] = ode15s(hhFull, tspan, y0full2);
+
+    % params = m V
+    hh2d_sym = @(t,params) [alpha_m(params(2))*(1-params(1)) - beta_m(params(2))*params(1);...
+        -(1/Cm)*(gNa*params(1)^3*h0*(params(2)-VNa)+ gK*n0^4*(params(2)-VK)+gCl*(params(2)-VCl))];
+
+    [~,hhres2d1] = ode15s(hh2d_sym, tspan, y02d1);
+    [~,hhres2d2] = ode15s(hh2d_sym, tspan, y02d2);
+
+    figure;
+    plot(V02d*1000,m02d,'*');
+    hold on;
+    grid on;
+    plot(hhresFull1(:,4).*1000,hhresFull1(:,2), hhresFull2(:,4).*1000,hhresFull2(:,2),...
+        hhres2d1(:,2).*1000, hhres2d1(:,1), hhres2d2(:,2).*1000, hhres2d2(:,1));
+    xlabel('V [mV]');
+    ylabel('m');
+    title(['Simulation with t = ' num2str(t(index)) ' [ms]']);
+    legend('Equilibrium Point','Full HH 1','Full HH 2', '2D HH 1', '2D HH 2');
+    hold on;
+end
 
 %% PART II
 
@@ -78,7 +242,7 @@ for a = a_vec
     end
 end
 %%
-figure(5);
+figure;
 [t,y] = ode15s(@(t,y)hhx(t,y,a_max), tspan, y0);
 v = y(:,4);
 p1 = subplot(1,2,1);
@@ -114,7 +278,7 @@ for ii = 1:N
 end
 
 % plot
-figure(4);
+figure;
 hold on
 plot(V_vec, n_nullcline, 'r');
 plot(V_vec, v_nullcline, 'b');
@@ -135,7 +299,7 @@ V_dots = V_dot_2D(V, N);
 n_plus = 2 * (n_dots > 0);
 v_plus = V_dots > 0;
 
-figure(6)
+figure
 hold on
 s = surf(V, N, n_plus + v_plus);
 colormap lines;
@@ -202,7 +366,7 @@ v_vec1 = y(:,2);
 n_vec2 = y(:,1);
 v_vec2 = y(:,2);
 
-figure(7);
+figure;
 hold on
 plot(V_vec, n_nullcline);
 plot(V_vec, v_nullcline);
@@ -241,7 +405,7 @@ for ii = 1:N
 end
 
 % plot
-figure(8);
+figure;
 hold on
 plot(V_vec, n_nullcline, 'r');
 plot(V_vec, v_nullcline, 'b');
@@ -290,8 +454,7 @@ hold off
 %% 3.3
 I_max = 8 - x(5) / 10;
 I_min = 0;
-
-k = 3;
+k = 2;
 
 while round(I_min, k) ~= round(I_max, k)
     I = (I_max + I_min) / 2;
@@ -299,9 +462,9 @@ while round(I_min, k) ~= round(I_max, k)
     ind = dsearchn(points', [-70, 0.35]);
     eig_vals = lambdas(:, ind);
     eig_val = real(eig_vals(1));
-    if eig_val > threshold
+    if eig_val > 0
         I_max = I;
-    elseif eig_val < -threshold
+    elseif eig_val < 0
             I_min = I;
     end
 end
@@ -331,7 +494,7 @@ V_dots = V_dot_2D(V, N);
 n_plus = 2 * (n_dots > 0);
 v_plus = V_dots > 0;
 
-figure(9)
+figure
 hold on
 s = surf(V, N, n_plus + v_plus);
 colormap lines;
@@ -386,7 +549,7 @@ n_vec2 = y(:,1);
 v_vec2 = y(:,2);
 
 
-figure(10);
+figure;
 hold on
 plot(V_vec, n_nullcline);
 plot(V_vec, v_nullcline);
